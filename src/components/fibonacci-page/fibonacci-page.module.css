@@ -1,0 +1,12 @@
+.circle {
+    margin-left: 10px;
+}
+
+.ul {
+    margin: 120px auto 0 auto;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(10, 80px);
+    justify-content: center;
+}
