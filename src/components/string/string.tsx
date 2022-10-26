@@ -6,6 +6,7 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { nanoid } from "nanoid";
 import { ElementStates } from "../../types/element-states";
+import { timeout } from "../../utils/utils";
 import { type } from "os";
 
 type TArr = {
@@ -22,9 +23,6 @@ export const StringComponent: React.FC = () => {
     setValue(e.target.value);
   };
   const numbers = Array.from(reg);
-  const timeout = (milliseconds: number) => {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
-  };
 
   const onClicked = async (numbers: string[], isLoader: boolean) => {
     setIsLoader(true);

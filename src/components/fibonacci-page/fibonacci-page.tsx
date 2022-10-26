@@ -5,6 +5,7 @@ import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { ElementStates } from "../../types/element-states";
+import { timeout } from "../../utils/utils";
 
 
 export const FibonacciPage: React.FC = () => {
@@ -14,10 +15,6 @@ export const FibonacciPage: React.FC = () => {
   const [isLoader, setIsLoader] = React.useState(false);
   const [numArr, setNumArr] = React.useState(arrInit);
   const [isLimitText, setIsLimitText] = React.useState(false);
-
-  const timeout = (milliseconds: number) => {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
-  };
 
   const fibIterative = async (n: number, isLoader: boolean) => {
     setIsLoader(true)
