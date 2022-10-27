@@ -1,0 +1,9 @@
+.input {
+    margin: auto;
+    display: flex;
+    width: 829px;
+}
+
+.circle {
+    margin-left: 16px;
+}
