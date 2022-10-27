@@ -1,0 +1,12 @@
+.input {
+  margin: auto;
+  display: flex;
+  width: 829px;
+}
+
+.circle {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
