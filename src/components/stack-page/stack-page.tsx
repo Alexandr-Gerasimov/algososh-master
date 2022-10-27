@@ -90,6 +90,7 @@ export const StackPage: React.FC = () => {
         {newArr.map((obj, id) => {
           return (
             <div className={styles.circle} key={id}>
+            {id === newArr.length - 1 ? (<><p>Top</p></>) : (<><p> </p></>)}
             <Circle key={id} letter={obj} state={isLoadind && id === newArr.length - 1 ? ElementStates.Changing : ElementStates.Default}></Circle>
             <p>{id}</p>
             </div>);
