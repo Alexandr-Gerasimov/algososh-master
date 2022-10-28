@@ -45,6 +45,11 @@ export class Stack<T> {
   getSize = () => this.container.length;
 }
 
+type TQueArr = {
+  obj: string;
+  color: ElementStates;
+};
+
 export class Queue {
   private container: string[] = [];
   private head = 0;
@@ -57,14 +62,12 @@ export class Queue {
     this.container = Array(size);
   }
 
-  enqueue = (item: string,
-    setNewArr: React.Dispatch<React.SetStateAction<string[]>>) => {
+  enqueue = (item: string) => {
     if (this.length >= this.size) {
       throw new Error("Maximum length exceeded");
     }
     console.log(item)
     this.container[this.tail] = item;
-    setNewArr([...this.container])
     this.tail++;
     this.length++;
   };
@@ -73,7 +76,6 @@ export class Queue {
     if (this.isEmpty()) {
       throw new Error("No elements in the queue");
     }
-
     this.head++;
     this.length--;
   };
@@ -84,12 +86,12 @@ export class Queue {
   };
 
   getHead = () => {
-    return this.head;
-  };
+    return this.head-1;
+  }; 
 
   getTail = () => {
-    return this.tail;
-  };
+    return this.tail-1;
+  }; 
 
   isEmpty = () => this.length === 0;
 }

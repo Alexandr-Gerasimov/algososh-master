@@ -8,31 +8,57 @@ import { ElementStates } from "../../types/element-states";
 import { Queue } from "../../utils/utils";
 import { timeout } from "../../utils/utils";
 
-const queue = new Queue(7)
+const queue = new Queue(7);
+
+type TArr = {
+  obj: string;
+  color: ElementStates;
+};
 
 export const QueuePage: React.FC = () => {
   const [value, setValue] = React.useState("");
-  const inNewArr: string[] = Array.from({length: 7})
-  const [newArr, setNewArr] = React.useState(inNewArr)
-  const [isLoadind, setIsLoadind] = React.useState(false);
+  const inNewArr: TArr[] = Array.from({ length: 7 }, () => ({
+    obj: "",
+    color: ElementStates.Default,
+    head: false,
+    tail: false
+  }));
+  const [newArr, setNewArr] = React.useState(inNewArr);
+  const [isLoadindAdd, setIsLoadindAdd] = React.useState(false);
+  const [isLoadindDel, setIsLoadindDel] = React.useState(false);
 
   const onChange = (e: any) => {
     setValue(e.target.value);
   };
 
   const enqueue = async () => {
-    queue.enqueue(value, setNewArr)
+    setIsLoadindAdd(true);
+    queue.enqueue(value);
     setValue("");
-    setIsLoadind(true);
+    newArr[queue.getTail()].obj = value;
+    newArr[queue.getTail()].color = ElementStates.Changing;
     await timeout(500);
-    setIsLoadind(false);
-  }
+    newArr[queue.getTail()].color = ElementStates.Default;
+    setIsLoadindAdd(false);
+    setValue("");
+  };
 
   const dequeue = async () => {
-    setIsLoadind(true);
+    setIsLoadindDel(true);
+    queue.dequeue();
+    newArr[queue.getHead()].color = ElementStates.Changing;
     await timeout(500);
-    queue.dequeue(setNewArr);
-    setIsLoadind(false);
+    newArr[queue.getHead()].color = ElementStates.Default;
+    if (queue.getHead() > 0) {
+      newArr[queue.getHead()].obj = "";
+    }
+    newArr[queue.getHead()].obj = value;
+    setIsLoadindDel(false);
+  };
+
+  const clear = async () => {
+    queue.clear();
+    setNewArr([...inNewArr]);
   };
 
   return (
@@ -46,35 +72,34 @@ export const QueuePage: React.FC = () => {
           type="text"
         ></Input>
         <Button
-        onClick={() => enqueue()}
-              extraClass="ml-12"
-              text="Добавить"
-            ></Button>
+          onClick={() => enqueue()}
+          extraClass="ml-12"
+          text="Добавить"
+          isLoader={isLoadindAdd === true}
+          disabled={isLoadindDel === true}
+        ></Button>
         <Button
-        onClick={() => dequeue()}
-              extraClass="ml-12"
-              text="Удалить"
-            ></Button>
-            <Button
-              extraClass="ml-40"
-              text="Очистить"
-            ></Button>
+          onClick={() => dequeue()}
+          extraClass="ml-12"
+          text="Удалить"
+          isLoader={isLoadindDel === true}
+          disabled={isLoadindAdd === true}
+        ></Button>
+        <Button
+          onClick={() => clear()}
+          extraClass="ml-40"
+          text="Очистить"
+          disabled={isLoadindDel === true || isLoadindAdd === true}
+        ></Button>
       </div>
       <ul className="ul">
         {newArr.map((obj, id) => {
           return (
             <div className={styles.circle} key={id}>
-              <Circle
-                key={id}
-                letter={obj}
-                state={
-                  isLoadind && id === newArr.length - 1
-                    ? ElementStates.Changing
-                    : ElementStates.Default
-                }
-              ></Circle>
+              <Circle extraClass='mb-10' key={id} letter={obj.obj} state={obj.color} head={obj.obj !== '' && queue.getHead()+1 === id ? 'head' : ''} tail={queue.getTail() === id ? 'Tail' : ''}></Circle>
               <p>{id}</p>
-            </div>)
+            </div>
+          );
         })}
       </ul>
     </SolutionLayout>
