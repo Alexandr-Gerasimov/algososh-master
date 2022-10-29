@@ -21,7 +21,7 @@ export const QueuePage: React.FC = () => {
     obj: "",
     color: ElementStates.Default,
     head: false,
-    tail: false
+    tail: false,
   }));
   const [newArr, setNewArr] = React.useState(inNewArr);
   const [isLoadindAdd, setIsLoadindAdd] = React.useState(false);
@@ -96,7 +96,16 @@ export const QueuePage: React.FC = () => {
         {newArr.map((obj, id) => {
           return (
             <div className={styles.circle} key={id}>
-              <Circle extraClass='mb-10' key={id} letter={obj.obj} state={obj.color} head={obj.obj !== '' && queue.getHead()+1 === id ? 'head' : ''} tail={queue.getTail() === id ? 'Tail' : ''}></Circle>
+              <Circle
+                extraClass="mb-10"
+                key={id}
+                letter={obj.obj}
+                state={obj.color}
+                head={
+                  obj.obj !== "" && queue.getHead() + 1 === id ? "head" : ""
+                }
+                tail={queue.getTail() === id ? "Tail" : ""}
+              ></Circle>
               <p>{id}</p>
             </div>
           );

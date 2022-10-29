@@ -205,13 +205,13 @@ export const ListPage: React.FC = () => {
         ...newList[i],
         topCircle: false,
       };
-      if(i<index) {
-      newList[i] = {
-        ...newList[i],
-        obj: newList[i].obj,
-        color: ElementStates.Changing,
-      };
-    }
+      if (i < index) {
+        newList[i] = {
+          ...newList[i],
+          obj: newList[i].obj,
+          color: ElementStates.Changing,
+        };
+      }
       setNewArr([...newList]);
     }
     await timeout(500);
