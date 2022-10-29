@@ -1,0 +1,67 @@
+.block {
+  margin: auto;
+  display: flex;
+  width: 952px;
+  margin-bottom: 38px;
+}
+
+.input {
+  width: 204px;
+}
+
+.button {
+  min-width: 362px;
+  margin-left: 12px;
+}
+
+.topButton {
+  min-width: 175px;
+  margin-left: 12px;
+}
+
+.circle {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.list {
+  display: flex;
+}
+
+.arrow {
+    display: flex;
+    margin-top: 30px;
+    margin-left: 12px;
+}
+
+.ul {
+  margin-top: 50px;
+  height: 250px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainCircle {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.smallTop {
+  position: absolute;
+  bottom: 650px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.smallBottom {
+  position: absolute;
+  bottom: 470px;
+  align-self: center;
+  justify-self: flex-end;
+  margin-bottom: 10px;
+}
