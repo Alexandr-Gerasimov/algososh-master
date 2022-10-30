@@ -5,7 +5,7 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import styles from "./stack-page.module.css";
 import { ElementStates } from "../../types/element-states";
-import { Stack } from "../../utils/utils";
+import { Stack } from "./utils";
 import { timeout } from "../../utils/utils";
 
 const stack = new Stack<string>();
@@ -15,7 +15,7 @@ export const StackPage: React.FC = () => {
   const [newArr, setNewArr] = React.useState<string[]>([]);
   const [isLoadind, setIsLoadind] = React.useState(false);
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
@@ -43,11 +43,12 @@ export const StackPage: React.FC = () => {
       <div className={styles.input}>
         <Input
           onChange={onChange}
+          value={value}
           isLimitText={true}
           maxLength={4}
           max={4}
           type="text"
-        ></Input>
+        />
         {value === "" ? (
           <>
             <Button
@@ -55,7 +56,7 @@ export const StackPage: React.FC = () => {
               disabled
               text="Добавить"
               onClick={() => push()}
-            ></Button>
+            />
           </>
         ) : (
           <>
@@ -63,7 +64,7 @@ export const StackPage: React.FC = () => {
               extraClass="ml-12"
               text="Добавить"
               onClick={() => push()}
-            ></Button>
+            />
           </>
         )}
         {newArr.length ? (
@@ -72,12 +73,12 @@ export const StackPage: React.FC = () => {
               extraClass="ml-12"
               text="Удалить"
               onClick={() => pop()}
-            ></Button>
+            />
             <Button
               extraClass="ml-40"
               text="Очистить"
               onClick={() => clear()}
-            ></Button>
+            />
           </>
         ) : (
           <>
@@ -86,13 +87,13 @@ export const StackPage: React.FC = () => {
               disabled
               text="Удалить"
               onClick={() => pop()}
-            ></Button>
+            />
             <Button
               disabled
               extraClass="ml-40"
               text="Очистить"
               onClick={() => clear()}
-            ></Button>
+            />
           </>
         )}
       </div>
@@ -117,7 +118,7 @@ export const StackPage: React.FC = () => {
                     ? ElementStates.Changing
                     : ElementStates.Default
                 }
-              ></Circle>
+              />
               <p>{id}</p>
             </div>
           );

@@ -5,8 +5,8 @@
 }
 
 .circle {
-    margin-left: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
