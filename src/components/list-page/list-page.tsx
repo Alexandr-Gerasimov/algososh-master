@@ -6,22 +6,10 @@ import { Circle } from "../ui/circle/circle";
 import styles from "./list-page.module.css";
 import { ElementStates } from "../../types/element-states";
 import { ArrowIcon } from "../ui/icons/arrow-icon";
-import { LinkedList } from "../../utils/utils";
+import { LinkedList } from "./utils";
+import { getRandomFloat } from "./utils";
+import { TArr } from "./utils";
 import { timeout } from "../../utils/utils";
-
-type TArr = {
-  obj: string | null;
-  color: ElementStates;
-  head?: boolean;
-  tail?: boolean;
-  topCircle?: boolean;
-  bottomCircle?: boolean;
-  smallName?: string | null;
-};
-
-function getRandomFloat(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min) + min);
-}
 
 export const ListPage: React.FC = () => {
   const [value, setValue] = React.useState("");
@@ -37,12 +25,13 @@ export const ListPage: React.FC = () => {
   const [isLoadindAdd, setIsLoadindAdd] = React.useState(false);
   const [isLoadind, setIsLoadind] = React.useState("");
 
-  const onValueChange = (e: any) => {
+  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const onIndexChange = (e: any) => {
-    setIndex(e.target.value);
+  const onIndexChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value);
+    setIndex(newValue);
   };
 
   const addHead = async () => {
@@ -131,7 +120,7 @@ export const ListPage: React.FC = () => {
     let listData = linkedList.listToData();
     let newList = newArr;
     await timeout(500);
-    newList[newList.length - 1] = {
+    newList[0] = {
       ...newList[0],
       topCircle: true,
       obj: null,
@@ -139,6 +128,10 @@ export const ListPage: React.FC = () => {
     };
     await timeout(500);
     setNewArr([...newList]);
+    newList[0] = {
+      ...newList[0],
+      topCircle: false,
+    };
     await timeout(500);
     newList.shift();
     setNewArr([...newList]);
@@ -231,6 +224,8 @@ export const ListPage: React.FC = () => {
     newList.forEach((obj) => (obj.color = ElementStates.Default));
     setNewArr([...newList]);
     setIsLoadind("");
+    setValue("");
+    setIndex(0);
   };
 
   const deleteIndex = async () => {
@@ -269,6 +264,8 @@ export const ListPage: React.FC = () => {
     await timeout(500);
     setNewArr([...newList]);
     setIsLoadind("");
+    setValue("");
+    setIndex(0);
   };
 
   return (
@@ -276,62 +273,76 @@ export const ListPage: React.FC = () => {
       <div className={styles.block}>
         <Input
           onChange={onValueChange}
+          value={value}
           maxLength={4}
           max={4}
           type="text"
+          isLimitText
           extraClass={styles.input}
-        ></Input>
+        />
         <Button
           onClick={() => addHead()}
           extraClass={styles.topButton}
           text="Добавить в head"
           disabled={value === "" || isLoadind !== ""}
           isLoader={isLoadind === "addHead"}
-        ></Button>
+        />
         <Button
           onClick={() => addTail()}
           extraClass={styles.topButton}
           text="Добавить в tail"
           disabled={value === "" || isLoadind !== ""}
           isLoader={isLoadind === "addTail"}
-        ></Button>
+        />
         <Button
           onClick={() => deleteHead()}
           extraClass={styles.topButton}
           text="Удалить из head"
           disabled={newArr.length === 0 || isLoadind !== ""}
           isLoader={isLoadind === "deleteHead"}
-        ></Button>
+        />
         <Button
           onClick={() => deleteTail()}
           extraClass={styles.topButton}
           text="Удалить из tail"
           disabled={newArr.length === 0 || isLoadind !== ""}
           isLoader={isLoadind === "deleteTail"}
-        ></Button>
+        />
       </div>
       <div className={styles.block}>
         <Input
           onChange={onIndexChange}
+          value={index}
           maxLength={4}
-          max={4}
-          type="text"
+          max={newArr.length - 1}
+          type="number"
+          isLimitText
           extraClass={styles.input}
-        ></Input>
+        />
         <Button
           onClick={() => addIndex()}
           extraClass={styles.button}
           text="Добавить по индексу"
-          disabled={index === 0 || value === "" || isLoadind !== ""}
+          disabled={
+            index === 0 ||
+            value === "" ||
+            isLoadind !== "" ||
+            index > newArr.length - 1
+          }
           isLoader={isLoadind === "addIndex"}
-        ></Button>
+        />
         <Button
           onClick={() => deleteIndex()}
           extraClass={styles.button}
           text="Удалить по индексу"
-          disabled={index === 0 || value !== "" || isLoadind !== ""}
+          disabled={
+            index === 0 ||
+            value !== "" ||
+            isLoadind !== "" ||
+            index > newArr.length - 1
+          }
           isLoader={isLoadind === "deleteIndex"}
-        ></Button>
+        />
       </div>
       <ul className={styles.ul}>
         {newArr.map((obj, id) => {
@@ -358,7 +369,7 @@ export const ListPage: React.FC = () => {
                       ? "Tail"
                       : ""
                   }
-                ></Circle>
+                />
                 {obj.bottomCircle === true && (
                   <Circle
                     isSmall={true}
@@ -370,7 +381,7 @@ export const ListPage: React.FC = () => {
               </div>
               {id !== newArr.length - 1 && (
                 <div className={styles.arrow}>
-                  <ArrowIcon></ArrowIcon>
+                  <ArrowIcon />
                 </div>
               )}
             </div>

@@ -5,15 +5,11 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import styles from "./queue-page.module.css";
 import { ElementStates } from "../../types/element-states";
-import { Queue } from "../../utils/utils";
+import { Queue } from "./utils";
 import { timeout } from "../../utils/utils";
+import { TArr } from "./utils";
 
 const queue = new Queue(7);
-
-type TArr = {
-  obj: string;
-  color: ElementStates;
-};
 
 export const QueuePage: React.FC = () => {
   const [value, setValue] = React.useState("");
@@ -27,7 +23,7 @@ export const QueuePage: React.FC = () => {
   const [isLoadindAdd, setIsLoadindAdd] = React.useState(false);
   const [isLoadindDel, setIsLoadindDel] = React.useState(false);
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
@@ -66,31 +62,32 @@ export const QueuePage: React.FC = () => {
       <div className={styles.input}>
         <Input
           onChange={onChange}
+          value={value}
           isLimitText={true}
           maxLength={4}
           max={4}
           type="text"
-        ></Input>
+        />
         <Button
           onClick={() => enqueue()}
           extraClass="ml-12"
           text="Добавить"
           isLoader={isLoadindAdd === true}
-          disabled={isLoadindDel === true}
-        ></Button>
+          disabled={isLoadindDel === true || !value || queue.isFull()}
+        />
         <Button
           onClick={() => dequeue()}
           extraClass="ml-12"
           text="Удалить"
           isLoader={isLoadindDel === true}
-          disabled={isLoadindAdd === true}
-        ></Button>
+          disabled={isLoadindAdd === true || queue.isEmpty()}
+        />
         <Button
           onClick={() => clear()}
           extraClass="ml-40"
           text="Очистить"
-          disabled={isLoadindDel === true || isLoadindAdd === true}
-        ></Button>
+          disabled={isLoadindDel === true || isLoadindAdd === true || queue.isEmpty()}
+        />
       </div>
       <ul className="ul">
         {newArr.map((obj, id) => {
@@ -105,7 +102,7 @@ export const QueuePage: React.FC = () => {
                   obj.obj !== "" && queue.getHead() + 1 === id ? "head" : ""
                 }
                 tail={queue.getTail() === id ? "Tail" : ""}
-              ></Circle>
+              />
               <p>{id}</p>
             </div>
           );

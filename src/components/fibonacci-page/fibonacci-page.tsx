@@ -29,18 +29,15 @@ export const FibonacciPage: React.FC = () => {
     });
 
     setIsLoader(false);
+    setValue(0)
   };
 
-  const onClick = (e: any) => {
-    e.preventDefault();
-    fibIterative(value, isLoader);
-  };
-
-  const onChange = (e: any) => {
-    if (e.target.value > 19) {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value);
+    if (newValue > 19) {
       setIsLimitText(true);
     }
-    setValue(e.target.value);
+    setValue(newValue);
   };
 
   return (
@@ -48,37 +45,34 @@ export const FibonacciPage: React.FC = () => {
       <div className="input">
         <Input
           onChange={onChange}
+          value={value}
           maxLength={19}
           max={19}
-          type="text"
-          isLimitText={isLimitText}
-        ></Input>
-        {isLimitText === true || value === 0 ? (
+          type="number"
+          isLimitText
+        />
+        {!value || value > 19 ? (
           <Button
             disabled
             isLoader={isLoader}
-            onClick={onClick}
+            onClick={(e) => fibIterative(value, isLoader)}
             extraClass="ml-12"
-            text="Развернуть"
-          ></Button>
+            text="Рассчитать"
+          />
         ) : (
           <Button
             isLoader={isLoader}
-            onClick={onClick}
+            onClick={(e) => fibIterative(value, isLoader)}
             extraClass="ml-12"
-            text="Развернуть"
-          ></Button>
+            text="Рассчитать"
+          />
         )}
       </div>
       <ul className={styles.ul}>
         {newArr.map((obj, id) => {
           return (
             <div className={styles.circle} key={id}>
-              <Circle
-                state={ElementStates.Default}
-                key={id}
-                letter={obj}
-              ></Circle>
+              <Circle state={ElementStates.Default} key={id} letter={obj} />
               <p>{id}</p>
             </div>
           );

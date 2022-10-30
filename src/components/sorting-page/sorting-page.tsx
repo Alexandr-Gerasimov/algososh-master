@@ -6,12 +6,7 @@ import { Column } from "../ui/column/column";
 import { ElementStates } from "../../types/element-states";
 import { timeout, swap } from "../../utils/utils";
 import styles from "./sorting-page.module.css";
-import { type } from "os";
-
-type TArr = {
-  obj: number;
-  color: ElementStates;
-};
+import { TArr } from "../../utils/utils";
 
 export const SortingPage: React.FC = () => {
   const arrInit: TArr[] = [];
@@ -157,12 +152,12 @@ export const SortingPage: React.FC = () => {
           label="Выбор"
           onChange={() => setRadioType("change")}
           checked={radioType === "change"}
-        ></RadioInput>
+        />
         <RadioInput
           label="Пузырёк"
           onChange={() => setRadioType("bubble")}
           checked={radioType === "bubble"}
-        ></RadioInput>
+        />
         <Button
           text="По возрастанию"
           onClick={() =>
@@ -170,7 +165,7 @@ export const SortingPage: React.FC = () => {
               ? bubbleSort(newArr, "acending")
               : changeSort(newArr, "acending")
           }
-        ></Button>
+        />
         <Button
           text="По убыванию"
           onClick={() =>
@@ -178,8 +173,8 @@ export const SortingPage: React.FC = () => {
               ? bubbleSort(newArr, "decending")
               : changeSort(newArr, "decending")
           }
-        ></Button>
-        <Button text="Новый массив" onClick={randomArr}></Button>
+        />
+        <Button text="Новый массив" onClick={randomArr} />
       </div>
       <div className={styles.column}>
         {newArr.map((obj, id) => {
@@ -189,7 +184,7 @@ export const SortingPage: React.FC = () => {
               state={obj.color}
               key={id}
               extraClass="ml-10"
-            ></Column>
+            />
           );
         })}
       </div>

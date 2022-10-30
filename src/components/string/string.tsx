@@ -1,25 +1,20 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import "./string.modules.css";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
-import { nanoid } from "nanoid";
 import { ElementStates } from "../../types/element-states";
 import { timeout } from "../../utils/utils";
-import { type } from "os";
-
-type TArr = {
-  obj: string;
-  color: ElementStates;
-};
+import { TArr } from "./utils"
 
 export const StringComponent: React.FC = () => {
-  const [reg, setValue] = React.useState([]);
+  const [reg, setValue] = React.useState<string>("");
   const arrInit: Array<TArr> = [];
   const [newArr, setNewArr] = React.useState(arrInit);
   const [isLoader, setIsLoader] = React.useState(false);
-  const onChange = (e: any) => {
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
   const numbers = Array.from(reg);
@@ -59,36 +54,38 @@ export const StringComponent: React.FC = () => {
     return arr;
   };
 
-  const onClick = (e: any) => {
-    e.preventDefault();
-    onClicked(numbers, isLoader);
-  };
-
   const numb = newArr;
 
   return (
     <SolutionLayout title="Строка">
       <div className="input">
-        <Input onChange={onChange} maxLength={11} max={11} type="text"></Input>
-        {!reg.length ? (
+        <Input
+          onChange={onChange}
+          value={reg}
+          maxLength={11}
+          max={11}
+          isLimitText
+          type="text"
+        />
+        {!reg.length || reg.length > 11 ? (
           <Button
             disabled
-            onClick={onClick}
+            onClick={(e) => onClicked(numbers, isLoader)}
             extraClass="ml-12"
             text="Развернуть"
-          ></Button>
+          />
         ) : (
           <Button
-            onClick={onClick}
+            onClick={(e) => onClicked(numbers, isLoader)}
             isLoader={isLoader}
             extraClass="ml-12"
             text="Развернуть"
-          ></Button>
+          />
         )}
       </div>
       <ul className="ul">
         {newArr.map((obj, id) => {
-          return <Circle state={obj.color} key={id} letter={obj.obj}></Circle>;
+          return <Circle state={obj.color} key={id} letter={obj.obj} />;
         })}
       </ul>
     </SolutionLayout>
