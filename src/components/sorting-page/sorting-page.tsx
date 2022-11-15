@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../ui/button/button";
 import { RadioInput } from "../ui/radio-input/radio-input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
@@ -24,6 +24,10 @@ export const SortingPage: React.FC = () => {
     }
     setNewArr([...arr]);
   }
+
+  useEffect(() => {
+    randomArr();
+  }, []);
 
   const bubbleSort = async (arr: TArr[], sort: "acending" | "decending") => {
     if (radioType === "bubble" && sort === "decending") {
