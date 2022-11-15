@@ -99,7 +99,7 @@ export const QueuePage: React.FC = () => {
                 letter={obj.obj}
                 state={obj.color}
                 head={
-                  obj.obj !== "" && queue.getHead() + 1 === id ? "head" : ""
+                  obj.obj !== "" && queue.getHead() + 1 === id ? "Head" : ""
                 }
                 tail={queue.getTail() === id ? "Tail" : ""}
               />
