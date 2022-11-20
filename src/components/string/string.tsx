@@ -7,6 +7,22 @@ import { Circle } from "../ui/circle/circle";
 import { ElementStates } from "../../types/element-states";
 import { timeout } from "../../utils/utils";
 import { TArr } from "./utils"
+import { swap } from "./utils";
+
+const stringRotation = async (numbers: string) => {
+  const nums = Array.from(numbers);
+  console.log(numbers)
+  let arr: TArr[] = [];
+  for (let i = 0; i < nums.length; i++) {
+    arr.push({ obj: nums[i], color: ElementStates.Default });
+  }
+  let start = 0;
+  let end = arr.length - 1;
+  for (let i = start, q = end; i <= q; i++, q--) {
+    swap(arr, i, q);
+  }
+  return arr;
+};
 
 export const StringComponent: React.FC = () => {
   const [reg, setValue] = React.useState<string>("");
@@ -19,7 +35,7 @@ export const StringComponent: React.FC = () => {
   };
   const numbers = Array.from(reg);
 
-  const onClicked = async (numbers: string[], isLoader: boolean) => {
+  const onClicked = async (numbers: string[]) => {
     setIsLoader(true);
     const swap = (
       arr: TArr[],
@@ -45,7 +61,6 @@ export const StringComponent: React.FC = () => {
       swap(arr, i, q);
       arr[i].color = ElementStates.Modified;
       arr[q].color = ElementStates.Modified;
-      console.log(arr[i], arr[q]);
     }
     await timeout(100).then(() => {
       setNewArr([...arr]);
@@ -53,8 +68,6 @@ export const StringComponent: React.FC = () => {
     setIsLoader(false);
     return arr;
   };
-
-  const numb = newArr;
 
   return (
     <SolutionLayout title="Строка">
@@ -70,13 +83,13 @@ export const StringComponent: React.FC = () => {
         {!reg.length || reg.length > 11 ? (
           <Button
             disabled
-            onClick={(e) => onClicked(numbers, isLoader)}
+            onClick={(e) => onClicked(numbers)}
             extraClass="ml-12"
             text="Развернуть"
           />
         ) : (
           <Button
-            onClick={(e) => onClicked(numbers, isLoader)}
+            onClick={(e) => onClicked(numbers)}
             isLoader={isLoader}
             extraClass="ml-12"
             text="Развернуть"
