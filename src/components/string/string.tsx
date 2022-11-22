@@ -6,23 +6,8 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { ElementStates } from "../../types/element-states";
 import { timeout } from "../../utils/utils";
-import { TArr } from "./utils"
-import { swap } from "./utils";
+import { TArr } from "./utils";
 
-const stringRotation = async (numbers: string) => {
-  const nums = Array.from(numbers);
-  console.log(numbers)
-  let arr: TArr[] = [];
-  for (let i = 0; i < nums.length; i++) {
-    arr.push({ obj: nums[i], color: ElementStates.Default });
-  }
-  let start = 0;
-  let end = arr.length - 1;
-  for (let i = start, q = end; i <= q; i++, q--) {
-    swap(arr, i, q);
-  }
-  return arr;
-};
 
 export const StringComponent: React.FC = () => {
   const [reg, setValue] = React.useState<string>("");
@@ -79,26 +64,20 @@ export const StringComponent: React.FC = () => {
           max={11}
           isLimitText
           type="text"
+          data-testid="input"
         />
-        {!reg.length || reg.length > 11 ? (
-          <Button
-            disabled
-            onClick={(e) => onClicked(numbers)}
-            extraClass="ml-12"
-            text="Развернуть"
-          />
-        ) : (
           <Button
             onClick={(e) => onClicked(numbers)}
             isLoader={isLoader}
+            disabled={!reg.length || reg.length > 11 ? true : false}
             extraClass="ml-12"
             text="Развернуть"
+            data-testid="button"
           />
-        )}
       </div>
-      <ul className="ul">
+      <ul className="ul" data-testid="circles">
         {newArr.map((obj, id) => {
-          return <Circle state={obj.color} key={id} letter={obj.obj} />;
+          return <Circle state={obj.color} key={id} letter={obj.obj} data-testid="circle"/>;
         })}
       </ul>
     </SolutionLayout>
