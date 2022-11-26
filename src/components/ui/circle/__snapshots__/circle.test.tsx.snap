@@ -3,17 +3,21 @@
 exports[`Buttons C react-элементом в head 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head string"
+    data-cy="head"
   >
     Head
   </div>
   <div
     className="circle   default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     >
       
     </p>
@@ -23,6 +27,7 @@ exports[`Buttons C react-элементом в head 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-cy="tail"
   />
 </div>
 `;
@@ -30,15 +35,19 @@ exports[`Buttons C react-элементом в head 1`] = `
 exports[`Buttons C react-элементом в tail 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle   default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     >
       
     </p>
@@ -48,6 +57,7 @@ exports[`Buttons C react-элементом в tail 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 string"
+    data-cy="tail"
   >
     Tail
   </div>
@@ -57,15 +67,19 @@ exports[`Buttons C react-элементом в tail 1`] = `
 exports[`Buttons C пропом isSmall === true 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle  small default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     />
   </div>
   <p
@@ -73,6 +87,7 @@ exports[`Buttons C пропом isSmall === true 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-cy="tail"
   />
 </div>
 `;
@@ -80,15 +95,19 @@ exports[`Buttons C пропом isSmall === true 1`] = `
 exports[`Buttons Без букв 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle   default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     />
   </div>
   <p
@@ -96,6 +115,7 @@ exports[`Buttons Без букв 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-cy="tail"
   />
 </div>
 `;
@@ -103,15 +123,19 @@ exports[`Buttons Без букв 1`] = `
 exports[`Buttons В состоянии changin 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle   changing"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     />
   </div>
   <p
@@ -119,6 +143,7 @@ exports[`Buttons В состоянии changin 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-cy="tail"
   />
 </div>
 `;
@@ -126,15 +151,19 @@ exports[`Buttons В состоянии changin 1`] = `
 exports[`Buttons В состоянии default 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle   default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     />
   </div>
   <p
@@ -142,6 +171,7 @@ exports[`Buttons В состоянии default 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-cy="tail"
   />
 </div>
 `;
@@ -149,15 +179,19 @@ exports[`Buttons В состоянии default 1`] = `
 exports[`Buttons В состоянии modified 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle   modified"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     />
   </div>
   <p
@@ -165,6 +199,7 @@ exports[`Buttons В состоянии modified 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-cy="tail"
   />
 </div>
 `;
@@ -172,17 +207,21 @@ exports[`Buttons В состоянии modified 1`] = `
 exports[`Buttons С head 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head string"
+    data-cy="head"
   >
     Head
   </div>
   <div
     className="circle   default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     />
   </div>
   <p
@@ -190,6 +229,7 @@ exports[`Buttons С head 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-cy="tail"
   />
 </div>
 `;
@@ -197,15 +237,19 @@ exports[`Buttons С head 1`] = `
 exports[`Buttons С index 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle   default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     />
   </div>
   <p
@@ -215,6 +259,7 @@ exports[`Buttons С index 1`] = `
   </p>
   <div
     className="text text_type_input text_color_input mt-4 absolute tail60 element"
+    data-cy="tail"
   />
 </div>
 `;
@@ -222,15 +267,19 @@ exports[`Buttons С index 1`] = `
 exports[`Buttons С tail 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle   default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     />
   </div>
   <p
@@ -238,6 +287,7 @@ exports[`Buttons С tail 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 string"
+    data-cy="tail"
   >
     Tail
   </div>
@@ -247,15 +297,19 @@ exports[`Buttons С tail 1`] = `
 exports[`Buttons С буквами 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
+    data-cy="head"
   />
   <div
     className="circle   default"
+    data-cy="style"
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-testid="letter"
     >
       
     </p>
@@ -265,6 +319,7 @@ exports[`Buttons С буквами 1`] = `
   />
   <div
     className="text text_type_input text_color_input mt-4 absolute tail30 element"
+    data-cy="tail"
   />
 </div>
 `;
