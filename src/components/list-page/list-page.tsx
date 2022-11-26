@@ -80,14 +80,14 @@ export const ListPage: React.FC = () => {
     let newList = newArr;
     await timeout(500);
     newList[newList.length - 1] = {
-      ...newList[0],
+      ...newList[newList.length - 1],
       bottomCircle: true,
       smallName: value,
     };
     setNewArr([...newList]);
     await timeout(500);
     newList[newList.length - 1] = {
-      ...newList[0],
+      ...newList[newList.length - 1],
       bottomCircle: false,
     };
     linkedList.addTail(value);
@@ -344,7 +344,7 @@ export const ListPage: React.FC = () => {
           isLoader={isLoadind === "deleteIndex"}
         />
       </div>
-      <ul className={styles.ul}>
+      <ul className={styles.ul} data-testid="circles">
         {newArr.map((obj, id) => {
           return (
             <div key={id} className={styles.list}>

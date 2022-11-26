@@ -9,7 +9,7 @@ import {
   tail,
 } from "../../src/constants/e2e_const";
 
-describe("Строка", () => {
+describe("Очередь", () => {
   it("загрузка страницы", () => {
     cy.visit("http://localhost:3000/queue");
   });

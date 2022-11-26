@@ -1,6 +1,7 @@
 export const circles = '[data-testid="circles"]'
 export const circle = '[data-cy="circle"]'
 export const style = '[data-cy="style"]'
+export const letter = '[data-testid="letter"]'
 export const head = '[data-cy="head"]'
 export const tail = '[data-cy="tail"]'
 export const defaultStyle = '4px solid rgb(0, 50, 255)'
