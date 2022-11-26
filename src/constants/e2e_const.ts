@@ -1,0 +1,6 @@
+export const circles = '[data-testid="circles"]'
+export const circle = '[data-cy="circle"]'
+export const style = '[data-cy="style"]'
+export const defaultStyle = '4px solid rgb(0, 50, 255)'
+export const chandingStyle = '4px solid rgb(210, 82, 225)'
+export const modifedStyle = '4px solid rgb(127, 224, 81)'

@@ -68,7 +68,7 @@ export const FibonacciPage: React.FC = () => {
           />
         )}
       </div>
-      <ul className={styles.ul}>
+      <ul className={styles.ul} data-testid="circles">
         {newArr.map((obj, id) => {
           return (
             <div className={styles.circle} key={id}>

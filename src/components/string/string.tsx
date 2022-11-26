@@ -77,7 +77,7 @@ export const StringComponent: React.FC = () => {
       </div>
       <ul className="ul" data-testid="circles">
         {newArr.map((obj, id) => {
-          return <Circle state={obj.color} key={id} letter={obj.obj} data-testid="circle"/>;
+          return <Circle state={obj.color} key={id} letter={obj.obj}/>;
         })}
       </ul>
     </SolutionLayout>

@@ -1,16 +1,12 @@
-import renderer from "react-test-renderer";
-import { stringRotation } from "./utils";
 import {
   render,
-  screen,
   fireEvent,
   waitFor,
-  getByTestId,
 } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { StringComponent } from "./string";
 
-jest.setTimeout(10000);
+jest.setTimeout(5000);
 describe("string", () => {
   it("с чётным количеством символов", async () => {
     const container = render(

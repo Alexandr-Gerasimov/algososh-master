@@ -156,11 +156,13 @@ export const SortingPage: React.FC = () => {
           label="Выбор"
           onChange={() => setRadioType("change")}
           checked={radioType === "change"}
+          data-testid="change"
         />
         <RadioInput
           label="Пузырёк"
           onChange={() => setRadioType("bubble")}
           checked={radioType === "bubble"}
+          data-testid="bubble"
         />
         <Button
           text="По возрастанию"
@@ -169,6 +171,7 @@ export const SortingPage: React.FC = () => {
               ? bubbleSort(newArr, "acending")
               : changeSort(newArr, "acending")
           }
+          data-testid="toHier"
         />
         <Button
           text="По убыванию"
@@ -177,10 +180,11 @@ export const SortingPage: React.FC = () => {
               ? bubbleSort(newArr, "decending")
               : changeSort(newArr, "decending")
           }
+          data-testid="toLower"
         />
         <Button text="Новый массив" onClick={randomArr} />
       </div>
-      <div className={styles.column}>
+      <div className={styles.column} data-testid="column">
         {newArr.map((obj, id) => {
           return (
             <Column
