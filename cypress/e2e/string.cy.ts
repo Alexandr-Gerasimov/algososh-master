@@ -5,11 +5,12 @@ import {
   defaultStyle,
   chandingStyle,
   modifedStyle,
+  testUrl
 } from "../../src/constants/e2e_const";
 
 describe("Строка", () => {
   it("загрузка страницы", () => {
-    cy.visit("http://localhost:3000/recursion");
+    cy.visit(`${testUrl}/recursion`);
   });
 
   it("Пустой массив", function () {

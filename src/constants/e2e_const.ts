@@ -1,3 +1,4 @@
+export const testUrl = 'http://localhost:3000'
 export const circles = '[data-testid="circles"]'
 export const circle = '[data-cy="circle"]'
 export const style = '[data-cy="style"]'

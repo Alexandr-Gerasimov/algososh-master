@@ -1,6 +1,8 @@
+import { testUrl } from '../../src/constants/e2e_const'
+
 describe('empty spec', () => {
   it('passes', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit(testUrl);
     cy.contains('МБОУ АЛГОСОШ');
     
   })

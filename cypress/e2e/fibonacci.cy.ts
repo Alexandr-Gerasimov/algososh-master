@@ -5,11 +5,13 @@ import {
   defaultStyle,
   chandingStyle,
   modifedStyle,
+  testUrl
 } from "../../src/constants/e2e_const";
+
 
 describe("Фибоначчи", () => {
   it("загрузка страницы", () => {
-    cy.visit("http://localhost:3000/fibonacci");
+    cy.visit(`${testUrl}/fibonacci`);
   });
 
   it("Пустой массив", function () {

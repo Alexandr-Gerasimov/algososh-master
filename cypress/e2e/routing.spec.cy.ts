@@ -1,8 +1,8 @@
-import { createYield } from "typescript"
+import { testUrl } from '../../src/constants/e2e_const'
 
 describe('Routing', function() {
-  it('Start page', function()  {
-    cy.visit('http://localhost:3000/')
+  beforeEach(() => {
+    cy.visit(testUrl)
   })
 
   it('String', function() {

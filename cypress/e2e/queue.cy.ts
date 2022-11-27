@@ -7,11 +7,12 @@ import {
   modifedStyle,
   head,
   tail,
+  testUrl
 } from "../../src/constants/e2e_const";
 
 describe("Очередь", () => {
   it("загрузка страницы", () => {
-    cy.visit("http://localhost:3000/queue");
+    cy.visit(`${testUrl}/queue`);
   });
 
   it("Пустой массив", function () {

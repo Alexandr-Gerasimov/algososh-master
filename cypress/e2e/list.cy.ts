@@ -8,12 +8,13 @@ import {
   modifedStyle,
   head,
   tail,
-  letter
+  letter,
+  testUrl
 } from "../../src/constants/e2e_const";
 
 describe("Список", () => {
   it("загрузка страницы", () => {
-    cy.visit("http://localhost:3000/list");
+    cy.visit(`${testUrl}/list`);
   });
 
   it("Пустой массив", function () {
