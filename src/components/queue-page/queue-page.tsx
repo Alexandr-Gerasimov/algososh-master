@@ -50,6 +50,7 @@ export const QueuePage: React.FC = () => {
     }
     newArr[queue.getHead()].obj = value;
     setIsLoadindDel(false);
+    setValue("")
   };
 
   const clear = async () => {
@@ -89,7 +90,7 @@ export const QueuePage: React.FC = () => {
           disabled={isLoadindDel === true || isLoadindAdd === true || queue.isEmpty()}
         />
       </div>
-      <ul className="ul">
+      <ul className="ul" data-testid="circles">
         {newArr.map((obj, id) => {
           return (
             <div className={styles.circle} key={id}>
@@ -99,7 +100,7 @@ export const QueuePage: React.FC = () => {
                 letter={obj.obj}
                 state={obj.color}
                 head={
-                  obj.obj !== "" && queue.getHead() + 1 === id ? "head" : ""
+                  obj.obj !== "" && queue.getHead() + 1 === id ? "Head" : ""
                 }
                 tail={queue.getTail() === id ? "Tail" : ""}
               />

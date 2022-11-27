@@ -97,7 +97,7 @@ export const StackPage: React.FC = () => {
           </>
         )}
       </div>
-      <ul className="ul">
+      <ul className="ul" data-testid="circles">
         {newArr.map((obj, id) => {
           return (
             <div className={styles.circle} key={id}>

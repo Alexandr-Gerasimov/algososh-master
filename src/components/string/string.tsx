@@ -6,7 +6,8 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { ElementStates } from "../../types/element-states";
 import { timeout } from "../../utils/utils";
-import { TArr } from "./utils"
+import { TArr } from "./utils";
+
 
 export const StringComponent: React.FC = () => {
   const [reg, setValue] = React.useState<string>("");
@@ -19,7 +20,7 @@ export const StringComponent: React.FC = () => {
   };
   const numbers = Array.from(reg);
 
-  const onClicked = async (numbers: string[], isLoader: boolean) => {
+  const onClicked = async (numbers: string[]) => {
     setIsLoader(true);
     const swap = (
       arr: TArr[],
@@ -45,7 +46,6 @@ export const StringComponent: React.FC = () => {
       swap(arr, i, q);
       arr[i].color = ElementStates.Modified;
       arr[q].color = ElementStates.Modified;
-      console.log(arr[i], arr[q]);
     }
     await timeout(100).then(() => {
       setNewArr([...arr]);
@@ -53,8 +53,6 @@ export const StringComponent: React.FC = () => {
     setIsLoader(false);
     return arr;
   };
-
-  const numb = newArr;
 
   return (
     <SolutionLayout title="Строка">
@@ -66,26 +64,20 @@ export const StringComponent: React.FC = () => {
           max={11}
           isLimitText
           type="text"
+          data-testid="input"
         />
-        {!reg.length || reg.length > 11 ? (
           <Button
-            disabled
-            onClick={(e) => onClicked(numbers, isLoader)}
-            extraClass="ml-12"
-            text="Развернуть"
-          />
-        ) : (
-          <Button
-            onClick={(e) => onClicked(numbers, isLoader)}
+            onClick={(e) => onClicked(numbers)}
             isLoader={isLoader}
+            disabled={!reg.length || reg.length > 11 ? true : false}
             extraClass="ml-12"
             text="Развернуть"
+            data-testid="button"
           />
-        )}
       </div>
-      <ul className="ul">
+      <ul className="ul" data-testid="circles">
         {newArr.map((obj, id) => {
-          return <Circle state={obj.color} key={id} letter={obj.obj} />;
+          return <Circle state={obj.color} key={id} letter={obj.obj}/>;
         })}
       </ul>
     </SolutionLayout>
