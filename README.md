@@ -14,6 +14,6 @@
 
 связный список
 
-Использованные технологии:
+# Использованные технологии:
 
-TypeScript, 
+TypeScript, React, CSS, Jest, Cupress
