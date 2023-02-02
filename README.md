@@ -22,4 +22,4 @@ TypeScript, React, CSS, Jest, Cupress
 
 npm i
 
-npm run dev
+npm start
